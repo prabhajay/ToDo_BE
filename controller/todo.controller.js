@@ -1,25 +1,32 @@
 //This one is endpoint and used api checked
-
-
-const getTodo=(req,res) =>{res.send(
+const toDoModel=require('../db/models/ToDo.model')
+//const {ToDo: toDoModel } =require('../db/models')
+const getToDo=async(req,res) =>{res.send(
     'to do get'
 )}
-const getTodos=(req,res) =>{res.send(
+const getToDos=async(req,res) =>{res.send(
     'to do get(s)'
 )}
-const createTodo=(req,res) =>{res.send(
-    'to do create'
-)}
-const updateTodo=(req,res) =>{res.send(
+const createToDo=async(req,res) =>{
+    try{
+        const todo=req.body
+        const newToDo=await toDoModel.create(todo)
+        res.send(newToDo)
+        return
+    }catch(err){
+        res.status(500).send(err.message)
+    }
+    }
+const updateToDo=async(req,res) =>{res.send(
     'to do update'
 )}
-const deleteTodo=(req,res) =>{res.send(
+const deleteToDo=async(req,res) =>{res.send(
     'to do delete'
 )}
 
-module.exports = {getTodo,
-getTodos,
-createTodo,
-updateTodo,
-deleteTodo
+module.exports = {getToDo,
+getToDos,
+createToDo,
+updateToDo,
+deleteToDo
 }

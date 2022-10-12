@@ -1,5 +1,5 @@
-const toDo=require('./todo.controller');
+const todo=require('./todo.controller');
 const user=require('./user.controller')
 module.exports= (
-    toDo,user
+    todo,user
 )
