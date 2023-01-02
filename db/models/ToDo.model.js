@@ -5,7 +5,7 @@ const toDoschema=new mongoose.Schema({
         required:[true,'to do text is required']
     },
     isCompleted:{
-        type:String,
+        type:Boolean,
         default:false
     }
 })

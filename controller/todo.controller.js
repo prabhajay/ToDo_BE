@@ -9,8 +9,8 @@ const getToDos=async(req,res) =>{res.send(
 )}
 const createToDo=async(req,res) =>{
     try{
-        const todo=req.body
-        const newToDo=await toDoModel.create(todo)
+        const toDo=req.body
+        const newToDo=await toDoModel.create(toDo)
         res.send(newToDo)
         return
     }catch(err){

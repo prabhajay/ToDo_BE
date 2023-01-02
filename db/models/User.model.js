@@ -1,22 +1,36 @@
 const mongoose = require('mongoose')
 
+/* 
+Schema 
+*/
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
-    required: [true, 'user email is required'],
+    required: [true, 'email is required'],
     unique: true,
-    min: 5,
-    max: 128,
-    match: [/^\S+@\S+$/g, 'invalid email format']
-  },
-  passwordHash: {
-    type: String,
-    required: [true, 'password is required'],
+    match: [/^\S+@\S+$/g, 'invalid email format'],
     min: 4,
     max: 128
-  }
+  },
+  password: {
+    type: String,
+    required: [true, 'password is required'],
+    min: 8,
+    max: 512
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false
+  }/*,
+  verified: {
+    type: Boolean,
+    default: false
+  }*/
 })
 
+/* 
+Model
+ */
 const User = mongoose.model('User', userSchema)
 
 module.exports = User
