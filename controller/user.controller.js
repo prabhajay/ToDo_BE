@@ -21,7 +21,10 @@ const login = async(req,res) =>{
         res.status(401).send("Incorrect email or password");
         return
         }
-        res.send('vaild access + token.')
+        const token=jwt.sign({email},process.env.JWT_SECURT, {expiresIn:'1h'})
+        const payload=jwt.verify(token,process.env.JWT_SECURT)
+
+        res.send({token,payload})
     }
     catch(err)
     { 

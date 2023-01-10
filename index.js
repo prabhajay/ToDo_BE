@@ -34,6 +34,7 @@ app.get('*',(req,res)=>{
 
 app.post('/login',login);
 app.post('/register',register);
+app.post ('verify-user/:email/')
 
 app.listen(port,()=>{
     console.log(`Server started on ${port}`)
